@@ -1,5 +1,8 @@
 class Add < ActiveRecord::Migration
   def change
-    add_column :users, :unconfirmed_email, :string
+    unless column_exists? :users, :unconfirmed_email
+      add_column :users, :unconfirmed_email, :string
+   end
+    
   end
 end
